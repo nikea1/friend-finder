@@ -1,0 +1,29 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "friend matchmaking app using express and node",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikea1/friend-finder.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "friend"
+  ],
+  "author": "Adenike Adeyemi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikea1/friend-finder/issues"
+  },
+  "homepage": "https://github.com/nikea1/friend-finder#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
