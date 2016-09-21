@@ -22,7 +22,7 @@
 		<hr>
 		<h2>Quetion 1</h2>
 		<h3>Insert Question 1</h3>
-		<select name="range">
+		<select id="1" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -32,7 +32,7 @@
 
 		<h2>Quetion 2</h2>
 		<h3>Insert Question 2</h3>
-		<select name="range">
+		<select id="2" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -42,7 +42,7 @@
 
 		<h2>Quetion 3</h2>
 		<h3>Insert Question 3</h3>
-		<select name="range">
+		<select id="3" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -52,7 +52,7 @@
 
 		<h2>Quetion 4</h2>
 		<h3>Insert Question 4</h3>
-		<select name="range">
+		<select id="4" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -62,7 +62,7 @@
 
 		<h2>Quetion 5</h2>
 		<h3>Insert Question 5</h3>
-		<select name="range">
+		<select id="5" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -72,7 +72,7 @@
 
 		<h2>Quetion 6</h2>
 		<h3>Insert Question 6</h3>
-		<select name="range">
+		<select id="6" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -82,7 +82,7 @@
 
 		<h2>Quetion 7</h2>
 		<h3>Insert Question 7</h3>
-		<select name="range">
+		<select id="7" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -92,7 +92,7 @@
 
 		<h2>Quetion 8</h2>
 		<h3>Insert Question 8</h3>
-		<select name="range">
+		<select id="8" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -102,7 +102,7 @@
 
 		<h2>Quetion 9</h2>
 		<h3>Insert Question 8</h3>
-		<select name="range">
+		<select id="9" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -112,7 +112,7 @@
 
 		<h2>Quetion 10</h2>
 		<h3>Insert Question 10</h3>
-		<select name="range">
+		<select id="10" name="range">
 			<option value="1">1 (Strongly Dissagree)</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -120,7 +120,7 @@
 			<option value="5">5 (Strongly Agree)</option>
 		</select>
 		<br>
-		<input type="submit" name="submit">
+		<input id="submit" type="submit" name="submit">
 	</form>
 	<hr>
 	<a href="/api/friends">Freind API</a> | <a href="https://github.com/nikea1/friend-finder">Github</a>
@@ -132,6 +132,42 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+		
+		$("#submit").on("click", function(){
+			var name = $("#name").val();
+			console.log(name);
+			var photo = $("#image").val();
+			console.log(photo);
+			//must have photo and name. 
+			if(name == "" || photo == "")
+				//put error flag here
+				return false;
+			//get survey values
+			var score = [];
+			for(var i = 1; i <= 10; i++){
+				console.log($("#"+i).val().trim());
+				var num = parseInt($("#"+i).val().trim());
+
+				score.push(num);
+			}
+
+
+
+			var newFriend = {
+				"name" : name,
+				"image": photo,
+				"score": score
+			}
+
+
+			$.post("/api/friends", newFriend).done(function(data){
+				console.log(data)
+			})
+			return false;
+		})
+		
+		
+	</script>
 </body>
 </html>
