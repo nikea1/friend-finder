@@ -146,13 +146,14 @@
 			//get survey values
 			var score = [];
 			for(var i = 1; i <= 10; i++){
-				console.log($("#"+i).val().trim());
+				//console.log($("#"+i).val().trim());
 				var num = parseInt($("#"+i).val().trim());
 
+				console.log("check", typeof(num) , num);
 				score.push(num);
 			}
 
-
+			console.log(score);
 
 			var newFriend = {
 				"name" : name,
@@ -160,7 +161,7 @@
 				"score": score
 			}
 
-
+			console.log(newFriend.score);
 			$.post("/api/friends", newFriend).done(function(data){
 				console.log(data)
 			})

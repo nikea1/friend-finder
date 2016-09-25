@@ -1,9 +1,10 @@
 var path = require("path");
 
+//displays survey
 module.exports.survey = function(req, res){
 	res.sendFile(path.join(__dirname, "../public/survey.html"));
 }
-
+//displays home page
 module.exports.home = function(req, res){
 	res.sendFile(path.join(__dirname, "../public/home.html"));
 }
