@@ -1,6 +1,7 @@
 var friends = require("../data/friends");
 
 //displays friend list
+
 exports.getFriends = function(req, res){
 	res.json(friends.matches)
 }
