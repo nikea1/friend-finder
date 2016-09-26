@@ -14,13 +14,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-
-
+//routing
 app.get("/survey", html.survey);
 app.get("/api/friends", api.getFriends);
-app.post("/api/friends", api.postFriends)
+app.post("/api/friends", api.postFriends);
 app.use("/", html.home);
 
+//port listener
 app.listen(PORT, function(){
 	console.log("Now listening to Port: "+PORT)
 })
