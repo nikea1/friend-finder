@@ -9,8 +9,8 @@ exports.postFriends = function(req, res){
 	//recieved json object
 	var newbie = req.body;
 	
-	//turns data from strings to numbers
-	newbie.score = newbie.score.map(function(x){return parseInt(x)});
+	//turns data from array strings number to array of actual numbers
+	newbie.score = newbie.score.map(Number);
 	
 	//store new friends score
 	var pScore = newbie.score;
